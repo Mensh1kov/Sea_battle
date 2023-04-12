@@ -5,6 +5,7 @@ from game.components.player import Player
 from game.components.ship import Ship
 from gui.displays.game_one_player_display import GameOnePlayerDisplay
 from gui.displays.game_over_display import GameOverDisplay
+from gui.displays.game_two_players_display import GameTwoPlayersDisplay
 from gui.displays.main_menu_display import MainMenuDisplay
 from game.logic import GameLogic
 
@@ -23,8 +24,8 @@ class App:
 
     def play_vs_bot(self):
         player = Player()
-        # player.place_ship(Ship(10, 10), 0, 0)
-        player.place_ship(Ship(1, 3), 0, 0)
+        player.place_ship(Ship(10, 10), 0, 0)
+        # player.place_ship(Ship(1, 3), 0, 0)
         bot = Bot()
         bot.place_ship(Ship(1, 1), 0, 0)
         self.game_logic = GameLogic(player, bot)
@@ -42,7 +43,17 @@ class App:
         self.display.back_to_menu_button.set_action(self.back_to_menu)
 
     def play_vs_player(self):
-        pass
+        player = Player()
+        # player.place_ship(Ship(10, 10), 0, 0)
+        player.place_ship(Ship(1, 3), 0, 0)
+        bot = Player()
+        bot.place_ship(Ship(1, 2), 0, 0, True)
+        self.game_logic = GameLogic(player, bot)
+        self.game_logic.start()
+        self.display = GameTwoPlayersDisplay(self.window.get_size(),
+                                             self.game_logic)
+        self.display.set_game_over_action(self.game_over)
+        print('play vs player')
 
     def start(self):
         self.running = True
