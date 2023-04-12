@@ -55,7 +55,7 @@ class Player:
 
     def fire(self, x: int, y: int) -> ResultAttack:
         try:
-            cell = self.board[x][y]
+            cell = self.board[y][x]
         except IndexError:
             return ResultAttack.ERROR
 
