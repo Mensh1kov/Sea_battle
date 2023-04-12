@@ -1,10 +1,12 @@
 import pygame
 
+from gui.displays.display import Display
 from gui.displays.widgets.button import Button
 
 
-class MainMenuDisplay:
-    def __init__(self):
+class MainMenuDisplay(Display):
+    def __init__(self, size: (int, int)):
+        super().__init__(size)
         self.bg_color = (255, 255, 255)
         self.play_vs_bot_button = Button('One player', 300, 137, 200, 50,
                                          (0, 255, 0), (0, 200, 0))

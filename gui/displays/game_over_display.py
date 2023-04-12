@@ -1,10 +1,12 @@
 import pygame
 
+from gui.displays.display import Display
 from gui.displays.widgets.button import Button
 
 
-class GameOverDisplay:
-    def __init__(self, name_winner):
+class GameOverDisplay(Display):
+    def __init__(self, size: (int, int), name_winner):
+        super().__init__(size)
         self.font = pygame.font.Font(None, 32)
         self.name_winner = name_winner
         self.bg_rect = pygame.Rect(250, 100, 300, 200)
