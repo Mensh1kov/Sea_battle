@@ -44,6 +44,6 @@ class Board:
                                   self.cell_width, self.cell_height), 1)
         pygame.draw.rect(window, (0, 0, 0), self.frame_board, 2)
 
-    def get_cell_pos(self, pos):
+    def get_cell_pos(self, pos: (int, int)):
         return (int((pos[0] - self.x) // self.cell_width),
                 int((pos[1] - self.y) // self.cell_height))
