@@ -8,7 +8,7 @@ from game.components.player import Player
 
 class BotDifficulty(Enum):
     EASY = 1
-    MEDIUM = 2
+    SMART = 2
 
 
 class Bot(Player):
