@@ -1,7 +1,12 @@
 import pygame
-from SeaBattle.components import Player, Bot, Ship
-from SeaBattle.gui import MainMenuDisplay, GameDisplay, GameOverDisplay
-from SeaBattle.logic import GameLogic
+
+from game.components.bot import Bot
+from game.components.player import Player
+from game.components.ship import Ship
+from gui.displays.game_display import GameDisplay
+from gui.displays.game_over_display import GameOverDisplay
+from gui.displays.main_menu_display import MainMenuDisplay
+from game.logic import GameLogic
 
 
 class App:
@@ -17,8 +22,9 @@ class App:
         self.game_logic = None
 
     def play_vs_bot(self):
-        player = Player('you')
-        player.place_ship(Ship(10, 10), 0, 0)
+        player = Player()
+        # player.place_ship(Ship(10, 10), 0, 0)
+        player.place_ship(Ship(1, 3), 0, 0)
         bot = Bot()
         bot.place_ship(Ship(1, 1), 0, 0)
         self.game_logic = GameLogic(player, bot)

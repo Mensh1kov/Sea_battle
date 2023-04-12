@@ -1,6 +1,6 @@
 import threading
 
-from SeaBattle.components import *
+from game.components.player import Player, ResultAttack
 
 
 class GameLogic(threading.Thread):
