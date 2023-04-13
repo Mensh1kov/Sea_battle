@@ -40,12 +40,14 @@ class Player:
         if horizontal:
             width, length = length, width
 
-        for i in range(width):
-            for j in range(length):
-                if x + i > 9 or y + j > 9:
+        for i in range(max(0, x - 1), min(x + width + 1, self.width_board)):
+            for j in range(max(0, y - 1), min(y + length + 1,
+                                              self.height_board)):
+                if isinstance(self.board[j][i], CellWithShip):
                     return False
-                if isinstance(self.board[y + j][x + i], CellWithShip):
-                    return False
+
+        if x + width > self.width_board or y + length > self.height_board:
+            return False
 
         for i in range(width):
             for j in range(length):
