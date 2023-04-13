@@ -4,6 +4,21 @@ from gui.displays.widgets.board import Board
 from game.logic import GameLogic
 
 
+class Text:
+    def __init__(self, pos: (int, int), text: str,
+                 font_size: int = 32,
+                 color: (int, int, int) = (255, 255, 255)):
+        self.font = pygame.font.Font(None, font_size)
+        self.text_surface = self.font.render(text, True, color)
+        self.text_rect = self.text_surface.get_rect()
+        # Это не очень хорошо, т.к. мы передаем позицию для размещения,
+        # а эта позиция задается центру текста
+        self.text_rect.center = pos
+
+    def render(self, surface):
+        surface.blit(self.text_surface, self.text_rect)
+
+
 class Signal:
     def __init__(self, x: int, y: int, wight: int,
                  height: int, color: (int, int, int)):
@@ -31,6 +46,14 @@ class GameTwoPlayersDisplay(GameDisplay):
                                                'signal': Signal(0, 0,
                                                                 wight, height,
                                                                 sign_color)}}
+        x = wight // 2
+        # не очень красивое решения для добавления подписи к доскам,
+        # возможно сделать одну сущность, которая будет внутри себя
+        # агрегировать и подпись и доску...
+        self.r_name = Text((x, 20), self.game_logic.move_player.name,
+                           color=(255, 0, 0))
+        self.l_name = Text((x * 3, 20), self.game_logic.sleep_player.name,
+                           color=(255, 0, 0))
 
     def render(self, surface):
         if self.game_logic.winner:
@@ -38,6 +61,8 @@ class GameTwoPlayersDisplay(GameDisplay):
 
         surface.fill(self.bg_color)
         self.dict[self.game_logic.move_player]['signal'].render(surface)
+        self.r_name.render(surface)
+        self.l_name.render(surface)
         self.left_board.render(surface)
         self.right_board.render(surface)
 
