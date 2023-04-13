@@ -1,3 +1,4 @@
+import random
 from enum import Enum
 from game.components.cell import Cell, CellWithShip
 from game.components.ship import Ship
@@ -12,12 +13,12 @@ class ResultAttack(Enum):
 
 
 class Player:
-    def __init__(self, width_board: int = 10,
-                 height_board: int = 10, name: str = 'Player'):
+    def __init__(self, board_size: (int, int) = (10, 10),
+                 name: str = 'Player'):
         self.name = name
         self.ships = []
-        self.width_board = width_board
-        self.height_board = height_board
+        self.width_board = board_size[0]
+        self.height_board = board_size[1]
         self.board = [[Cell() for _ in range(self.width_board)]
                       for _ in range(self.height_board)]
         self.opponent_board = [[Cell() for _ in range(self.width_board)]

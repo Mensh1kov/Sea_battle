@@ -12,9 +12,9 @@ class BotDifficulty(Enum):
 
 
 class Bot(Player):
-    def __init__(self, speed: float = 0.1,
+    def __init__(self, board_size: (int, int), speed: float = 0.1,
                  difficulty: BotDifficulty = BotDifficulty.EASY):
-        super(Bot, self).__init__(name='Bot')
+        super(Bot, self).__init__(board_size, name='Bot')
         self.speed = speed
         self.difficulty = difficulty
         self.available_moves = list(
