@@ -33,6 +33,15 @@ class Player:
         self.__move = None
         return move
 
+    def place_ships_randomly(self, ships: list[Ship]):
+        for ship in ships:
+            placed = False
+            while not placed:
+                x = random.randint(0, self.width_board - 1)
+                y = random.randint(0, self.height_board - 1)
+                horizontal = random.choice([True, False])
+                placed = self.place_ship(ship, x, y, horizontal)
+
     def place_ship(self, ship: Ship, x: int, y: int, horizontal=False) -> bool:
         width = ship.width
         length = ship.length
