@@ -50,9 +50,9 @@ class GameTwoPlayersDisplay(GameDisplay):
         # не очень красивое решения для добавления подписи к доскам,
         # возможно сделать одну сущность, которая будет внутри себя
         # агрегировать и подпись и доску...
-        self.r_name = Text((x, 20), self.game_logic.move_player.name,
+        self.r_name = Text((x * 3, 20), self.game_logic.move_player.name,
                            color=(255, 0, 0))
-        self.l_name = Text((x * 3, 20), self.game_logic.sleep_player.name,
+        self.l_name = Text((x, 20), self.game_logic.sleep_player.name,
                            color=(255, 0, 0))
 
     def render(self, surface):
