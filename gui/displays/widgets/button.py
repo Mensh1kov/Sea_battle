@@ -11,14 +11,14 @@ class Button:
         self.action = action
         self.font = pygame.font.Font(None, 32)
 
-    def render(self, window):
+    def render(self, surface):
         if self.is_hovering(pygame.mouse.get_pos()):
-            pygame.draw.rect(window, self.hover_color, self.rect)
+            pygame.draw.rect(surface, self.hover_color, self.rect)
         else:
-            pygame.draw.rect(window, self.color, self.rect)
+            pygame.draw.rect(surface, self.color, self.rect)
         text_surface = self.font.render(self.text, True, (255, 255, 255))
         text_rect = text_surface.get_rect(center=self.rect.center)
-        window.blit(text_surface, text_rect)
+        surface.blit(text_surface, text_rect)
 
     def is_hovering(self, pos):
         return self.rect.collidepoint(pos)
