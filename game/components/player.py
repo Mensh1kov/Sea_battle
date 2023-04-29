@@ -39,14 +39,17 @@ class Player:
             while not placed:
                 x = random.randint(0, self.width_board - 1)
                 y = random.randint(0, self.height_board - 1)
-                horizontal = random.choice([True, False])
-                placed = self.place_ship(ship, x, y, horizontal)
+                ship.pos = (x, y)
+                ship.horizontal = random.choice([True, False])
+                placed = self.place_ship(ship)
 
-    def place_ship(self, ship: Ship, x: int, y: int, horizontal=False) -> bool:
+    def place_ship(self, ship: Ship) -> bool:
         width = ship.width
         length = ship.length
+        x = ship.pos[0]
+        y = ship.pos[1]
 
-        if horizontal:
+        if ship.horizontal:
             width, length = length, width
 
         for i in range(max(0, x - 1), min(x + width + 1, self.width_board)):

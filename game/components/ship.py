@@ -1,8 +1,11 @@
 
 class Ship:
-    def __init__(self, width: int, length: int):
+    def __init__(self, pos: (int, int), width: int,
+                 length: int, horizontal=False):
+        self.pos = pos
         self.width = width
         self.length = length
+        self.horizontal = horizontal
         self.size = width * length
         self.hits = 0
 
