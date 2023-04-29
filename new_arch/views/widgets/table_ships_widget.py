@@ -10,13 +10,16 @@ class TableShipsWidget(QTableWidget):
         self.horizontalHeader().setMinimumSectionSize(0)
         self.verticalHeader().setDefaultSectionSize(23)
         self.verticalHeader().setMinimumSectionSize(0)
-        self.set_ships([(1, 2, 3), (2, 2, 2)])
         self.setHorizontalHeaderLabels(['Width', 'Height', 'Count'])
 
     def get_list_ships(self) -> list:
-        return [(int(self.item(row, column).text())
-                 for column in range(self.columnCount()))
-                for row in range(self.rowCount())]
+        rows = []
+        for row in range(self.rowCount()):
+            row_data = []
+            for column in range(self.columnCount()):
+                row_data.append(int(self.item(row, column).text()))
+            rows.append(tuple(row_data))
+        return rows
 
     def add_ship(self):
         self.insertRow(0)
