@@ -1,8 +1,14 @@
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QWidget, QGridLayout, QSpinBox, QPushButton
+from PyQt5.QtWidgets import QWidget, QGridLayout, QSpinBox, QPushButton, QComboBox
 
 from new_arch.views.widgets.my_label import MyLabel
 from new_arch.views.widgets.table_ships_widget import TableShipsWidget
+
+
+class BotLevelsBox(QComboBox):
+    def __init__(self, widget: QWidget = None):
+        super().__init__(widget)
+        self.addItems(['Easy', 'Smart'])
 
 
 class SettingsWidget(QWidget):
@@ -15,6 +21,7 @@ class SettingsWidget(QWidget):
         self.table_ships = TableShipsWidget(self)
         self.add_ship_button = QPushButton('Add', self)
         self.remove_ship_button = QPushButton('Remove', self)
+        self.bot_levels_box = BotLevelsBox(self)
         self.layout = QGridLayout(self)
 
         self._setup_layout()
@@ -22,15 +29,17 @@ class SettingsWidget(QWidget):
 
     def _setup_layout(self):
         self.layout.setContentsMargins(0, 0, 0, 0)
-        self.layout.addWidget(MyLabel(15, 'Board size', self), 0, 0, 1, 6)
-        self.layout.addWidget(MyLabel(10, 'Width', self), 1, 0, 1, 2)
+        self.layout.addWidget(MyLabel(15, 'Bot level', self), 0, 0, 1, 6)
+        self.layout.addWidget(self.bot_level_box, 1, 2, 1, 2)
+        self.layout.addWidget(MyLabel(15, 'Board size', self), 2, 0, 1, 6)
+        self.layout.addWidget(MyLabel(10, 'Width', self), 3, 0, 1, 2)
         self.layout.addWidget(self.board_with_spin)
-        self.layout.addWidget(MyLabel(10, 'Height', self), 1, 3, 1, 2)
+        self.layout.addWidget(MyLabel(10, 'Height', self), 3, 3, 1, 2)
         self.layout.addWidget(self.board_height_spin)
-        self.layout.addWidget(MyLabel(15, 'Ships', self), 2, 0, 1, 6)
-        self.layout.addWidget(self.table_ships, 3, 0, 1, 6)
-        self.layout.addWidget(self.add_ship_button, 5, 0, 1, 3)
-        self.layout.addWidget(self.remove_ship_button, 5, 3, 1, 3)
+        self.layout.addWidget(MyLabel(15, 'Ships', self), 4, 0, 1, 6)
+        self.layout.addWidget(self.table_ships, 5, 0, 1, 6)
+        self.layout.addWidget(self.add_ship_button, 6, 0, 1, 3)
+        self.layout.addWidget(self.remove_ship_button, 6, 3, 1, 3)
 
     def _setup_logic(self):
         table = self.table_ships
