@@ -1,5 +1,7 @@
 import random
 from enum import Enum
+from typing import Union
+
 from game.components.cell import Cell, CellWithShip
 from game.components.ship import Ship
 
@@ -91,6 +93,26 @@ class Player:
 
     def is_loser(self) -> bool:
         return not bool(len(self.ships))
+
+    def remove_ship(self, pos: (int, int)) -> Union[None, Ship]:
+        try:
+            cell = self.board[pos[0]][pos[1]]
+        except IndexError:
+            return None
+
+        if isinstance(cell, CellWithShip):
+            ship = cell.get_ship()
+            self.ships.remove(ship)
+            width = ship.width
+            length = ship.length
+
+            if ship.horizontal:
+                width, length = length, width
+
+            for i in range(width):
+                for j in range(length):
+                    self.board[i][j] = Cell()
+            return ship
 
     def update_opponent_board(self, x: int, y: int, result: ResultAttack):
         if result != ResultAttack.MISS and result != ResultAttack.ATTACKED:
