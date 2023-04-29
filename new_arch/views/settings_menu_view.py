@@ -1,17 +1,8 @@
 from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QPushButton
-
+from PyQt5.QtWidgets import QWidget, QHBoxLayout
+from new_arch.views.widgets.my_button import MyButton
 from new_arch.views.widgets.my_label import MyLabel
 from new_arch.views.widgets.settings_layuot import SettingsWidget
-
-
-class MyButton(QPushButton):
-    def __init__(self, height: int, font_size: int,
-                 text: str, widget: QWidget = None):
-        super().__init__(text, widget)
-        self.setFont(QFont(None, font_size))
-        self.setMinimumSize(QtCore.QSize(0, height))
 
 
 class SaveExitButtonsWidget(QWidget):
