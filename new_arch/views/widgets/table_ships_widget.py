@@ -19,7 +19,7 @@ class TableShipsWidget(QTableWidget):
                 for row in range(self.rowCount())]
 
     def add_ship(self):
-        self.insertRow(self.rowCount())
+        self.insertRow(0)
 
     def remove_ship(self):
         self.removeRow(self.rowCount() - 1)

@@ -30,7 +30,7 @@ class SettingsWidget(QWidget):
     def _setup_layout(self):
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.layout.addWidget(MyLabel(15, 'Bot level', self), 0, 0, 1, 6)
-        self.layout.addWidget(self.bot_level_box, 1, 2, 1, 2)
+        self.layout.addWidget(self.bot_levels_box, 1, 2, 1, 2)
         self.layout.addWidget(MyLabel(15, 'Board size', self), 2, 0, 1, 6)
         self.layout.addWidget(MyLabel(10, 'Width', self), 3, 0, 1, 2)
         self.layout.addWidget(self.board_with_spin)
@@ -51,7 +51,7 @@ class SettingsWidget(QWidget):
         self.board_height_spin.setValue(size[1])
 
     def get_board_size(self) -> (int, int):
-        return int(self.board_with_spin.text()), int(self.board_height_spin)
+        return int(self.board_with_spin.text()), int(self.board_height_spin.text())
 
 
 if __name__ == "__main__":
