@@ -1,3 +1,6 @@
+import copy
+from collections.abc import Callable
+
 from PyQt5.QtWidgets import QApplication
 
 from game.components.bot import BotDifficulty
@@ -9,6 +12,7 @@ class SettingsController:
     def __init__(self, model: SettingsModel, view: SettingsMenuView):
         self._model = model
         self._view = view
+        self._exit_action = None
         self._setup_view()
 
     def _setup_view(self):
@@ -26,8 +30,9 @@ class SettingsController:
 
     def _setup_save_exit_buttons_view(self):
         self._view.save_exit_buttons.save_and_exit_button.clicked.connect(
-            self._save_exit)
-        self._view.save_exit_buttons.exit_button.clicked.connect(self._exit)
+            lambda: self._save_exit())
+        self._view.save_exit_buttons.exit_button.clicked.connect(
+            lambda: self._exit())
 
     def _setup_bot_levels_view(self):
         if self._model.get_bot_level() == BotDifficulty.EASY:
@@ -54,7 +59,11 @@ class SettingsController:
             self._model.set_bot_level(BotDifficulty.SMART)
 
     def _exit(self):
-        pass
+        if self._exit_action:
+            self._exit_action()
+
+    def set_exit_action(self, action: Callable[(), None]):
+        self._exit_action = action
 
 
 if __name__ == "__main__":
