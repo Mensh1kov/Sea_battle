@@ -21,8 +21,12 @@ class PlacementShipsController:
     def setup_view(self):
         self.setup_placement_management_view()
         self.setup_available_ships_view()
+        self.setup_ready_view()
         self.update_available_ships_view()
         self.update_ready_status()
+
+    def setup_ready_view(self):
+        self._view.ready_button.clicked.connect(self.ready_click)
 
     def setup_placement_management_view(self):
         self._view.placement_management.random_button.clicked.connect(
@@ -32,11 +36,11 @@ class PlacementShipsController:
         self._view.placement_management.remove_button.clicked.connect(
             self.remove_click)
         self._view.placement_management.board.cellClicked.connect(
-            self.choose_pos)
+            lambda *pos: self.choose_pos(pos))
 
     def setup_available_ships_view(self):
         self._view.available_ships.table_ships.cellClicked.connect(
-            self.choose_size_ship)
+            lambda *pos: self.choose_size_ship(pos))
         self._view.available_ships.table_ships.setEditTriggers(
             QAbstractItemView.NoEditTriggers)
 
@@ -67,11 +71,11 @@ class PlacementShipsController:
             code_board.append(code_row)
         self._view.placement_management.board.update_(code_board)
 
-    def choose_size_ship(self, *pos: (int, int)):
+    def choose_size_ship(self, pos: (int, int)):
         self._chose_size_ship = self._view.available_ships.table_ships.get_ship(
             pos[0])
 
-    def choose_pos(self, *pos: (int, int)):
+    def choose_pos(self, pos: (int, int)):
         self._chose_pos = pos
         if self._chose_size_ship:
             self.place_ship(self._chose_size_ship)
