@@ -11,3 +11,6 @@ class Ship:
 
     def is_sunk(self) -> bool:
         return self.hits == self.size
+
+    def set_horizontal(self, value: bool):
+        self.horizontal = value
