@@ -23,6 +23,7 @@ class PlacementShipsController:
         self.setup_available_ships_view()
         self.setup_ready_view()
         self.update_available_ships_view()
+        self.update_board_view()
         self.update_ready_status()
 
     def setup_ready_view(self):
