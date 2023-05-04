@@ -1,3 +1,5 @@
+import copy
+
 from game.components.bot import BotDifficulty
 
 
@@ -34,7 +36,7 @@ class SettingsModel:
         self._bot_level = level
 
     def get_ships(self) -> list[(int, int)]:
-        return self._ships
+        return copy.deepcopy(self._ships)
 
     def get_bot_speed(self) -> float:
         return self._bot_speed
