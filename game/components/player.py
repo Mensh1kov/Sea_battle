@@ -57,7 +57,7 @@ class Player:
         for i in range(max(0, x - 1), min(x + width + 1, self.width_board)):
             for j in range(max(0, y - 1), min(y + length + 1,
                                               self.height_board)):
-                if isinstance(self.board[j][i], CellWithShip):
+                if isinstance(self.board[i][j], CellWithShip):
                     return False
 
         if x + width > self.width_board or y + length > self.height_board:
@@ -65,14 +65,14 @@ class Player:
 
         for i in range(width):
             for j in range(length):
-                self.board[y + j][x + i] = CellWithShip(ship)
+                self.board[x + i][y + j] = CellWithShip(ship)
 
         self.ships.append(ship)
         return True
 
     def fire(self, x: int, y: int) -> ResultAttack:
         try:
-            cell = self.board[y][x]
+            cell = self.board[x][y]
         except IndexError:
             return ResultAttack.ERROR
 
@@ -111,13 +111,16 @@ class Player:
 
             for i in range(width):
                 for j in range(length):
-                    self.board[i][j] = Cell()
+                    self.board[i + ship.pos[0]][j + ship.pos[1]] = Cell()
             return ship
 
     def update_opponent_board(self, x: int, y: int, result: ResultAttack):
         if result != ResultAttack.MISS and result != ResultAttack.ATTACKED:
-            cell = CellWithShip(Ship(1, 1))
+            cell = CellWithShip(Ship((x, y), 1, 1))
             cell.set_hit(True)
-            self.opponent_board[y][x] = cell
+            self.opponent_board[x][y] = cell
         else:
-            self.opponent_board[y][x].set_hit(True)
+            self.opponent_board[x][y].set_hit(True)
+
+    def set_name(self, name: str):
+        self.name = name
