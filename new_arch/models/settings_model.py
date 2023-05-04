@@ -27,13 +27,13 @@ class SettingsModel:
     def set_board_size(self, size: (int, int)):
         self._board_size = size
 
-    def set_ships(self, ships: list[tuple[int, int, int]]):
+    def set_ships(self, ships: list[(int, int, int)]):
         self._ships = ships
 
     def set_bot_level(self, level: BotDifficulty):
         self._bot_level = level
 
-    def get_ships(self) -> list[tuple[int, int, int]]:
+    def get_ships(self) -> list[(int, int)]:
         return self._ships
 
     def get_bot_speed(self) -> float:
