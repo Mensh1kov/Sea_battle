@@ -12,11 +12,11 @@ class SettingsModel:
 
     def set_default_settings(self):
         self._board_size: (int, int) = (10, 10)
-        self._ships: list[tuple[int, int, int]] = [
-            (1, 1, 4),
-            (1, 2, 3),
-            (1, 3, 2),
-            (1, 4, 1)
+        self._ships: list[(int, int)] = [
+            (1, 1),
+            (1, 2),
+            (1, 3),
+            (1, 4)
         ]
         self._bot_speed: float = 0.0001
         self._bot_level = BotDifficulty.SMART
