@@ -48,7 +48,7 @@ class BoardWidget(QTableWidget):
                 code = board[row][column]
 
                 if code == 0:
-                    pass
+                    self.pain_cell(row, column, (255, 255, 255))
                 elif code == 1:
                     self.pain_cell(row, column, (192, 192, 192))
                 elif code == 2:
@@ -67,5 +67,12 @@ if __name__ == '__main__':
         [0, 1, 1, 0, 2],
         [0, 3, 3, 0, 0]
     ])
+    # window.update_([
+    #     [0, 0, 0, 0, 0],
+    #     [0, 0, 0, 0, 0],
+    #     [0, 0, 0, 0, 0],
+    #     [0, 0, 0, 0, 0],
+    #     [0, 0, 0, 0, 0]
+    # ])
     window.show()
     app.exec_()
