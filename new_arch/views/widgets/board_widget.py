@@ -22,6 +22,8 @@ class BoardWidget(QTableWidget):
         self.cellClicked.connect(lambda *args: print(args))
 
     def setup_board(self, rows: int, columns: int):
+        self.setRowCount(rows)
+        self.setColumnCount(columns)
         cell_width = self._size // columns
         cell_height = self._size // rows
         self.horizontalHeader().setDefaultSectionSize(cell_width)
