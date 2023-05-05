@@ -54,17 +54,17 @@ class Player:
         if ship.horizontal:
             width, length = length, width
 
-        for i in range(max(0, x - 1), min(x + width + 1, self.width_board)):
-            for j in range(max(0, y - 1), min(y + length + 1,
-                                              self.height_board)):
+        for i in range(max(0, x - 1), min(x + length + 1, self.height_board)):
+            for j in range(max(0, y - 1), min(y + width + 1,
+                                              self.width_board)):
                 if isinstance(self.board[i][j], CellWithShip):
                     return False
 
-        if x + width > self.width_board or y + length > self.height_board:
+        if y + width > self.width_board or x + length > self.height_board:
             return False
 
-        for i in range(width):
-            for j in range(length):
+        for i in range(length):
+            for j in range(width):
                 self.board[x + i][y + j] = CellWithShip(ship)
 
         self.ships.append(ship)
@@ -109,8 +109,8 @@ class Player:
             if ship.horizontal:
                 width, length = length, width
 
-            for i in range(width):
-                for j in range(length):
+            for i in range(length):
+                for j in range(width):
                     self.board[i + ship.pos[0]][j + ship.pos[1]] = Cell()
             return ship
 
