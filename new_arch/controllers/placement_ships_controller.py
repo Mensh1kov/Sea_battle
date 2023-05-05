@@ -77,8 +77,8 @@ class PlacementShipsController:
         self._view.placement_management.board.update_(code_board)
 
     def choose_size_ship(self, pos: (int, int)):
-        self._chose_size_ship = self._view.available_ships.table_ships.get_ship(
-            pos[0])
+        self._chose_size_ship = self._view.available_ships.table_ships.\
+            get_ship(pos[0])
 
     def choose_pos(self, pos: (int, int)):
         self._chose_pos = pos
@@ -123,6 +123,7 @@ if __name__ == '__main__':
     app = QApplication([])
     player = Player()
     view = PlacementShipsView()
-    controllers = PlacementShipsController(player, [(1, 1), (2, 1), (3, 1), (5, 3)], view)
+    controllers = PlacementShipsController(player, [(1, 1), (2, 1),
+                                                    (3, 1), (5, 3)], view)
     view.show()
     app.exec_()
