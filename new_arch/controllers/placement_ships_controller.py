@@ -22,9 +22,13 @@ class PlacementShipsController:
         self.setup_placement_management_view()
         self.setup_available_ships_view()
         self.setup_ready_view()
+        self.setup_name_view()
         self.update_available_ships_view()
         self.update_board_view()
         self.update_ready_status()
+
+    def setup_name_view(self):
+        self._view.name_input.input.setText(self._player.name)
 
     def setup_ready_view(self):
         self._view.ready_button.clicked.connect(self.ready_click)
