@@ -1,10 +1,10 @@
-from copy import copy
-
 from PyQt5.QtWidgets import QMainWindow, QApplication
-
+from game.components.player import Player
+from new_arch.controllers.placement_ships_controller import PlacementShipsController
 from new_arch.controllers.settings_controller import SettingsController
 from new_arch.models.settings_model import SettingsModel
 from new_arch.views.main_menu_view import MainMenuWidget
+from new_arch.views.placement_ships_view import PlacementShipsView
 from new_arch.views.settings_menu_view import SettingsMenuView
 
 
@@ -22,16 +22,36 @@ class MainController:
         menu.one_player_button.clicked.connect(self.one_player)
         menu.two_player_button.clicked.connect(self.two_player)
         menu.settings_button.clicked.connect(self.settings)
-        menu.exit_button.clicked.connect(self.exit)
+        menu.exit_button.clicked.connect(self.exit_)
 
     def one_player(self):
         print('one player')
 
     def two_player(self):
-        print('two player')
+        player = Player(self._settings.get_board_size())
+        player2 = Player(self._settings.get_board_size())
+        self.placement_ships(player, player2)
 
-    def exit(self):
-        print('exit')
+    def placement_ships(self, player: Player, *players: Player):
+        self.main_menu_view = self.main_window.takeCentralWidget()
+        view = PlacementShipsView()
+        self.main_window.setCentralWidget(view)
+        controller = PlacementShipsController(player,
+                                              self._settings.get_ships(),
+                                              view)
+        itr_players = iter(players)
+
+        def f():  # нужно еще подумать
+            try:
+                controller.set_player(next(itr_players))
+                controller.set_available_ships(self._settings.get_ships())
+            except StopIteration:
+                self.back_to_main_menu()
+
+        controller.set_ready_action(f)
+
+    def exit_(self):
+        sys.exit()  # возможно, это не совсем корректно
 
     def settings(self):
         view = SettingsMenuView()
