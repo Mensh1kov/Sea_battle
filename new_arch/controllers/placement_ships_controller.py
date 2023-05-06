@@ -118,6 +118,15 @@ class PlacementShipsController:
     def set_ready_action(self, action: Callable[(), None]):
         self._ready_action = action
 
+    def set_player(self, player: Player):
+        self._player = player
+        self.setup_name_view()
+        self.update()
+
+    def set_available_ships(self, ships: list[(int, int)]):
+        self._available_ships = ships
+        self.update()
+
 
 if __name__ == '__main__':
     app = QApplication([])
