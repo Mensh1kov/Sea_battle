@@ -21,6 +21,8 @@ class GameOverDialog(QDialog):
         self.back_menu_button.setFont(QFont(None, 15))
         self.back_menu_button.setText('Menu')
 
+    def set_name_winner(self, name: str):
+        self.winner.setText(f'Winner is {name}')
 
 if __name__ == "__main__":
     import sys
