@@ -45,7 +45,6 @@ class MainController:
         def f():  # нужно еще подумать
             controller.set_player(player2)
             controller.set_available_ships(self._settings.get_ships())
-            controller.set_ready_action(lambda: self.g)
             controller.set_ready_action(lambda: self.start_game(player1,
                                                                 player2))
         controller.set_ready_action(f)

@@ -107,7 +107,9 @@ class PlacementShipsController:
                 self.update()
 
     def random_click(self):
-        pass
+        self._player.place_ships_randomly(self._available_ships)
+        self._available_ships = []
+        self.update()
 
     def ready_click(self):
         if name := self._view.name_input.input.text():
