@@ -70,6 +70,12 @@ class Player:
         self.ships.append(ship)
         return True
 
+    def get_ship(self, pos: (int, int)) -> Ship:
+        cell = self.board[pos[0]][pos[1]]
+        if isinstance(cell, CellWithShip):
+            return cell.get_ship()
+        return None
+
     def fire(self, x: int, y: int) -> ResultAttack:
         try:
             cell = self.board[x][y]

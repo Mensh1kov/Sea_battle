@@ -16,6 +16,7 @@ class PlacementShipsController:
         self._ready_action = None
         self._chose_size_ship: (int, int) = None
         self._chose_pos: (int, int) = None
+        self._chose_ship: Ship = None
         self.setup_view()
 
     def setup_view(self):
@@ -70,7 +71,10 @@ class PlacementShipsController:
             code_row = []
             for cell in row:
                 if isinstance(cell, CellWithShip):
-                    code_row.append(3)
+                    if cell.get_ship() == self._chose_ship:
+                        code_row.append(4)
+                    else:
+                        code_row.append(3)
                 else:
                     code_row.append(0)
             code_board.append(code_row)
@@ -82,11 +86,18 @@ class PlacementShipsController:
 
     def choose_pos(self, pos: (int, int)):
         self._chose_pos = pos
+        self.choose_ship(pos)
         if self._chose_size_ship:
             self.place_ship(self._chose_size_ship)
+        else:
+            self.update()
+
+    def choose_ship(self, pos: (int, int)) -> Ship:
+        self._chose_ship = self._player.get_ship(pos)
 
     def place_ship(self, size: (int, int)):
         ship = Ship(self._chose_pos, size[0], size[1])
+        self._chose_ship = ship
         if self._player.place_ship(ship):
             self._available_ships.remove(self._chose_size_ship)
             self._chose_size_ship = None

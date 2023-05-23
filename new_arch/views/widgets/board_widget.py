@@ -44,6 +44,7 @@ class BoardWidget(QTableWidget):
         # 1 - miss
         # 2 - hit
         # 3 - ship
+        # 4 - choose ship
 
         for row in range(rows):
             for column in range(columns):
@@ -55,8 +56,10 @@ class BoardWidget(QTableWidget):
                     self.pain_cell(row, column, (192, 192, 192))
                 elif code == 2:
                     self.pain_cell(row, column, (255, 0, 0))
-                else:
+                elif code == 3:
                     self.pain_cell(row, column, (64, 64, 64))
+                else:
+                    self.pain_cell(row, column, (61, 61, 216))
 
 
 if __name__ == '__main__':
