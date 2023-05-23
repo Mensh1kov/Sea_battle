@@ -17,7 +17,11 @@ class SettingsWidget(QWidget):
         self.setFixedSize(261, 301)
         
         self.board_with_spin = QSpinBox(self)
+        self.board_with_spin.setMinimum(5)
+        self.board_with_spin.setMaximum(25)
         self.board_height_spin = QSpinBox(self)
+        self.board_height_spin.setMinimum(5)
+        self.board_height_spin.setMaximum(25)
         self.table_ships = TableShipsWidget(self)
         self.add_ship_button = QPushButton('Add', self)
         self.remove_ship_button = QPushButton('Remove', self)
