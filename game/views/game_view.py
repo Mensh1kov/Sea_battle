@@ -1,8 +1,8 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QWidget
 
-from new_arch.views.widgets.board_and_player_widget import BoardAndPlayerWidget
-from new_arch.views.widgets.game_over_dialog import GameOverDialog
+from game.views.widgets.board_and_player_widget import BoardAndPlayerWidget
+from game.views.widgets.game_over_dialog import GameOverDialog
 
 
 class GameView(QWidget):

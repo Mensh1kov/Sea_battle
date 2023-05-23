@@ -2,7 +2,7 @@ import itertools
 import random
 import time
 from enum import Enum
-from game.components.player import Player, ResultAttack
+from game.models.components.player import Player, ResultAttack
 
 
 class BotDifficulty(Enum):

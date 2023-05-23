@@ -2,8 +2,8 @@ import random
 from enum import Enum
 from typing import Union
 
-from game.components.cell import Cell, CellWithShip
-from game.components.ship import Ship
+from game.models.components.cell import Cell, CellWithShip
+from game.models.components.ship import Ship
 
 
 class ResultAttack(Enum):

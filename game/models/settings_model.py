@@ -1,6 +1,6 @@
 import copy
 
-from game.components.bot import BotDifficulty
+from game.models.components.bot import BotDifficulty
 
 
 class SettingsModel:

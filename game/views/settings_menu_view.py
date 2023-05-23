@@ -1,8 +1,8 @@
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QWidget, QHBoxLayout
-from new_arch.views.widgets.my_button import MyButton
-from new_arch.views.widgets.my_label import MyLabel
-from new_arch.views.widgets.settings_layuot import SettingsWidget
+from game.views.widgets.my_button import MyButton
+from game.views.widgets.my_label import MyLabel
+from game.views.widgets.settings_layuot import SettingsWidget
 
 
 class SaveExitButtonsWidget(QWidget):

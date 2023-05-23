@@ -1,5 +1,5 @@
 from typing import Union
-from game.components.player import Player, ResultAttack
+from game.models.components.player import Player, ResultAttack
 
 
 class GameModel:

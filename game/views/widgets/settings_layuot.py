@@ -1,8 +1,8 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QWidget, QGridLayout, QSpinBox, QPushButton, QComboBox
 
-from new_arch.views.widgets.my_label import MyLabel
-from new_arch.views.widgets.table_ships_widget import TableShipsWidget
+from game.views.widgets.my_label import MyLabel
+from game.views.widgets.table_ships_widget import TableShipsWidget
 
 
 class BotLevelsBox(QComboBox):

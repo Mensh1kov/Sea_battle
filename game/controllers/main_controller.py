@@ -1,14 +1,14 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication
-from game.components.player import Player
-from new_arch.controllers.game_controller import GameController
-from new_arch.controllers.placement_ships_controller import PlacementShipsController
-from new_arch.controllers.settings_controller import SettingsController
-from new_arch.models.game_model import GameModel
-from new_arch.models.settings_model import SettingsModel
-from new_arch.views.game_view import GameView
-from new_arch.views.main_menu_view import MainMenuWidget
-from new_arch.views.placement_ships_view import PlacementShipsView
-from new_arch.views.settings_menu_view import SettingsMenuView
+from game.models.components.player import Player
+from game.controllers.game_controller import GameController
+from game.controllers.placement_ships_controller import PlacementShipsController
+from game.controllers.settings_controller import SettingsController
+from game.models.game_model import GameModel
+from game.models.settings_model import SettingsModel
+from game.views.game_view import GameView
+from game.views.main_menu_view import MainMenuWidget
+from game.views.placement_ships_view import PlacementShipsView
+from game.views.settings_menu_view import SettingsMenuView
 
 
 class MainController:

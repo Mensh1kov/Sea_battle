@@ -1,9 +1,9 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtCore import QRect
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QDialog, QWidget, QPushButton
 
-from new_arch.views.widgets.my_label import MyLabel
+from game.views.widgets.my_label import MyLabel
 
 
 class GameOverDialog(QDialog):

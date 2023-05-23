@@ -1,11 +1,11 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QWidget
 
-from new_arch.views.widgets.board_widget import BoardWidget
-from new_arch.views.widgets.my_button import MyButton
-from new_arch.views.widgets.my_label import MyLabel
-from new_arch.views.widgets.table_ships_widget import TableShipsWidget
+from game.views.widgets.board_widget import BoardWidget
+from game.views.widgets.my_button import MyButton
+from game.views.widgets.my_label import MyLabel
+from game.views.widgets.table_ships_widget import TableShipsWidget
 
 
 class NameInputWidget(QWidget):

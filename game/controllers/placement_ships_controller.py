@@ -1,9 +1,9 @@
 from collections.abc import Callable
 from PyQt5.QtWidgets import QApplication, QAbstractItemView
-from game.components.cell import CellWithShip
-from game.components.player import Player
-from game.components.ship import Ship
-from new_arch.views.placement_ships_view import PlacementShipsView
+from game.models.components.cell import CellWithShip
+from game.models.components.player import Player
+from game.models.components.ship import Ship
+from game.views.placement_ships_view import PlacementShipsView
 
 
 class PlacementShipsController:

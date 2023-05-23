@@ -1,7 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QWidget
 
-from new_arch.views.widgets.board_widget import BoardWidget
+from game.views.widgets.board_widget import BoardWidget
 
 
 class BoardAndPlayerWidget(QWidget):

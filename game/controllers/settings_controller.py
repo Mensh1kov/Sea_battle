@@ -1,11 +1,10 @@
-import copy
 from collections.abc import Callable
 
 from PyQt5.QtWidgets import QApplication
 
-from game.components.bot import BotDifficulty
-from new_arch.models.settings_model import SettingsModel
-from new_arch.views.settings_menu_view import SettingsMenuView
+from game.models.components.bot import BotDifficulty
+from game.models.settings_model import SettingsModel
+from game.views.settings_menu_view import SettingsMenuView
 
 
 class SettingsController:

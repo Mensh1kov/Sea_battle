@@ -1,11 +1,11 @@
 from PyQt5.QtWidgets import QApplication
 
-from game.components.cell import CellWithShip, Cell
-from game.components.player import Player
-from game.components.ship import Ship
-from new_arch.models.game_model import GameModel
-from new_arch.views.game_view import GameView
-from new_arch.views.widgets.board_and_player_widget import BoardAndPlayerWidget
+from game.models.components.cell import CellWithShip
+from game.models.components.player import Player
+from game.models.components.ship import Ship
+from game.models.game_model import GameModel
+from game.views.game_view import GameView
+from game.views.widgets.board_and_player_widget import BoardAndPlayerWidget
 
 
 class GameController:

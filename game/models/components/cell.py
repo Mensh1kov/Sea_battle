@@ -1,4 +1,4 @@
-from game.components.ship import Ship
+from game.models.components.ship import Ship
 
 
 class Cell:
