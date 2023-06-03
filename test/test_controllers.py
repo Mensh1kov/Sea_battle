@@ -1,5 +1,4 @@
 import sys
-import time
 import unittest
 from unittest.mock import MagicMock, call
 from PyQt5.QtCore import QTime, QTimer
@@ -390,7 +389,8 @@ class SettingsControllerTestCase(unittest.TestCase):
         self.assertEqual(self.model.get_bot_level(), BotDifficulty.SMART)
 
     def test_save_exit_buttons_view(self):
-        save_and_exit_button = self.view.save_exit_buttons.save_and_exit_button
+        save_and_exit_button = self.view.save_exit_buttons\
+            .save_and_exit_button
         exit_button = self.view.save_exit_buttons.exit_button
 
         save_and_exit_button.click()
