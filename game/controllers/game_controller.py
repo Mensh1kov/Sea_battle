@@ -117,7 +117,6 @@ class GameController:
         return code_board
 
     def choose_pos(self, pos):
-        print(pos)
         self._model.make_move(pos)
         self.update()
 

@@ -15,7 +15,7 @@ class SettingsWidget(QWidget):
     def __init__(self, widget: QWidget = None):
         super().__init__(widget)
         self.setFixedSize(261, 301)
-        
+
         self.board_with_spin = QSpinBox(self)
         self.board_with_spin.setMinimum(5)
         self.board_with_spin.setMaximum(25)
@@ -55,11 +55,13 @@ class SettingsWidget(QWidget):
         self.board_height_spin.setValue(size[1])
 
     def get_board_size(self) -> (int, int):
-        return int(self.board_with_spin.text()), int(self.board_height_spin.text())
+        return (int(self.board_with_spin.text()),
+                int(self.board_height_spin.text()))
 
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     game_part = SettingsWidget()
     game_part.show()

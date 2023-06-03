@@ -49,7 +49,8 @@ class SettingsController:
         self._model.set_board_size(self._view.settings.get_board_size())
 
     def _save_ships(self):
-        self._model.set_ships(self._view.settings.table_ships.get_list_ships())
+        self._model.set_ships(
+            self._view.settings.table_ships.get_list_ships())
 
     def _save_bot_level(self):
         if self._view.settings.bot_levels_box.currentIndex() == 0:

@@ -17,9 +17,7 @@ class BoardWidget(QTableWidget):
         self.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.setEditTriggers(QTableWidget.NoEditTriggers)
         self.setSelectionMode(QAbstractItemView.NoSelection)
-
         self.setup_board(rows, columns)
-        self.cellClicked.connect(lambda *args: print(args))
 
     def setup_board(self, rows: int, columns: int):
         self.setRowCount(rows)
