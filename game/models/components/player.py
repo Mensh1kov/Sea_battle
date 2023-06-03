@@ -26,6 +26,7 @@ class Player:
         self.opponent_board = [[Cell() for _ in range(self.width_board)]
                                for _ in range(self.height_board)]
         self.__move = None
+        self.time = 4
 
     def set_move(self, pos: (int, int)):
         self.__move = pos
@@ -98,7 +99,7 @@ class Player:
         return ResultAttack.MISS
 
     def is_loser(self) -> bool:
-        return not bool(len(self.ships))
+        return not bool(len(self.ships)) or not self.time
 
     def remove_ship(self, pos: (int, int)) -> Union[None, Ship]:
         try:

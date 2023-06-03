@@ -1,5 +1,5 @@
+from PyQt5.QtCore import QTime, QTimer
 from PyQt5.QtWidgets import QApplication
-
 from game.models.components.cell import CellWithShip
 from game.models.components.player import Player
 from game.models.components.ship import Ship
@@ -14,12 +14,20 @@ class GameController:
         self._view = view
         self._game_parts: dict[Player, BoardAndPlayerWidget] = {}
         self._game_over_action = None
+        self._timer = None
         self.setup()
         self.update()
 
     def setup(self):
         self.setup_controller()
         self.setup_view()
+        self.setup_timer()
+
+    def setup_timer(self):
+        self._timer = QTimer()
+        self._timer.setInterval(1000)
+        self._timer.timeout.connect(self.update_time)
+        self._timer.start()
 
     def setup_controller(self):
         self._game_parts = {
@@ -37,17 +45,34 @@ class GameController:
         self._view.game_over_dialog.back_menu_button.clicked.connect(
             lambda: self._game_over_action()
         )
+        m_player = self._model.move_player
+        s_player = self._model.sleep_player
+        self._game_parts[m_player].time_edit.setTime(
+            QTime(0, 0, 0).addSecs(m_player.time)
+        )
+        self._game_parts[s_player].time_edit.setTime(
+            QTime(0, 0, 0).addSecs(s_player.time)
+        )
 
     def update(self):
         if winner := self._model.get_winner():
             self._view.game_over_dialog.set_name_winner(winner.name)
             self._view.game_over_dialog.show()
+            self._timer.stop()
         self.update_view()
 
     def update_view(self):
         self.update_parts_view()
         self.update_move_player_view()
         self.update_board_view()
+
+    def update_time(self):
+        move_player = self._model.move_player
+        move_player.time -= 1
+        self._game_parts[move_player].time_edit.setTime(
+            QTime(0, 0, 0).addSecs(move_player.time))
+        self._model.check_game_over()
+        self.update()
 
     def update_parts_view(self):
         self._game_parts.get(self._model.move_player).setEnabled(True)

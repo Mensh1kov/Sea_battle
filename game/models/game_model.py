@@ -8,10 +8,16 @@ class GameModel:
         self.sleep_player = player2
         self.winner = None
 
+    def check_game_over(self):
+        if self.is_game_over():
+            if self.sleep_player.is_loser():
+                self.winner = self.move_player
+            else:
+                self.winner = self.sleep_player
+
     def update(self, pos: (int, int), result: ResultAttack):
         self.move_player.update_opponent_board(*pos, result=result)
-        if self.is_game_over():
-            self.winner = self.move_player
+        self.check_game_over()
 
         if result not in (ResultAttack.HIT, ResultAttack.SUNK):
             self.switch_players()

@@ -1,7 +1,19 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QWidget
-
+from PyQt5.QtWidgets import QWidget, QTimeEdit
 from game.views.widgets.board_widget import BoardWidget
+
+
+class TimeEdit(QTimeEdit):
+    def __init__(self, widget: QWidget = None):
+        super().__init__(widget)
+        self.setGeometry(QtCore.QRect(170, 80, 61, 31))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.setFont(font)
+        self.setAlignment(QtCore.Qt.AlignCenter)
+        self.setButtonSymbols(QtWidgets.QAbstractSpinBox.NoButtons)
+        self.setDisplayFormat("mm:ss")
+        self.setReadOnly(True)
 
 
 class BoardAndPlayerWidget(QWidget):
@@ -11,8 +23,7 @@ class BoardAndPlayerWidget(QWidget):
 
         self.board = BoardWidget(10, 10, self)
         self.board.move(20, 120)
-        # self.board.setGeometry(QtCore.QRect(19, 120, 362, 362))
-
+        self.time_edit = TimeEdit(self)
         self.move_player = QtWidgets.QLabel(self)
         self.move_player.setGeometry(QtCore.QRect(20, 40, 360, 40))
         font = QtGui.QFont()
