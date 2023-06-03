@@ -19,7 +19,8 @@ class GameModel:
         self.move_player.update_opponent_board(*pos, result=result)
         self.check_game_over()
 
-        if result not in (ResultAttack.HIT, ResultAttack.SUNK):
+        if result not in (ResultAttack.HIT, ResultAttack.SUNK,
+                          ResultAttack.ATTACKED):
             self.switch_players()
 
     def make_move(self, pos: (int, int)):

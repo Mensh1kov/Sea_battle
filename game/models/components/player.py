@@ -26,7 +26,7 @@ class Player:
         self.opponent_board = [[Cell() for _ in range(self.width_board)]
                                for _ in range(self.height_board)]
         self.__move = None
-        self.time = 4
+        self.time = 120
 
     def set_move(self, pos: (int, int)):
         self.__move = pos
