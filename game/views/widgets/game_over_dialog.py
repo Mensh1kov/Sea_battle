@@ -14,6 +14,7 @@ class GameOverDialog(QDialog):
         self.title.setGeometry(QtCore.QRect(0, 0, 350, 40))
 
         self.winner = MyLabel(15, 'Winner is', self)
+        self.name_winner = None
         self.winner.setGeometry(QtCore.QRect(0, 70, 350, 40))
 
         self.back_menu_button = QPushButton(self)
@@ -22,7 +23,11 @@ class GameOverDialog(QDialog):
         self.back_menu_button.setText('Menu')
 
     def set_name_winner(self, name: str):
+        self.name_winner = name
         self.winner.setText(f'Winner is {name}')
+
+    def get_name_winner(self):
+        return self.name_winner
 
 if __name__ == "__main__":
     import sys

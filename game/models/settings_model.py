@@ -36,7 +36,7 @@ class SettingsModel:
         self._bot_level = BotDifficulty.SMART
 
     def set_bot_speed(self, speed: float):
-        if speed <= .001:
+        if speed > .001:
             self.set_default_bot_speed()
         else:
             self._bot_speed = speed

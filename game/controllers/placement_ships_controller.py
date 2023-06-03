@@ -107,6 +107,7 @@ class PlacementShipsController:
         if self._chose_pos:
             if ship := self._player.remove_ship(self._chose_pos):
                 self._available_ships.append((ship.width, ship.length))
+                self._chose_ship = None
                 self.update()
 
     def turn_click(self):
