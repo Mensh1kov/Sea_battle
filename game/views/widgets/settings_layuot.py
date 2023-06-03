@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QWidget, QGridLayout, QSpinBox, QPushButton, QComboBox
+from PyQt5.QtWidgets import QWidget, QGridLayout, \
+    QSpinBox, QPushButton, QComboBox
 
 from game.views.widgets.my_label import MyLabel
 from game.views.widgets.table_ships_widget import TableShipsWidget

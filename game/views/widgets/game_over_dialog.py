@@ -29,6 +29,7 @@ class GameOverDialog(QDialog):
     def get_name_winner(self):
         return self.name_winner
 
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

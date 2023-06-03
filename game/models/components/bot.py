@@ -129,4 +129,3 @@ class Bot(Player):
 
         if result != ResultAttack.MISS and result != ResultAttack.ATTACKED:
             self.hits.append(self.last_move_pos)
-    

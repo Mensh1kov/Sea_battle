@@ -1,7 +1,8 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from game.models.components.player import Player
 from game.controllers.game_controller import GameController
-from game.controllers.placement_ships_controller import PlacementShipsController
+from game.controllers.placement_ships_controller import \
+    PlacementShipsController
 from game.controllers.settings_controller import SettingsController
 from game.models.game_model import GameModel
 from game.models.settings_model import SettingsModel
@@ -42,7 +43,8 @@ class MainController:
         controller = PlacementShipsController(player1,
                                               self._settings.get_ships(),
                                               view)
-        def f():  # нужно еще подумать
+
+        def f():
             controller.set_player(player2)
             controller.set_available_ships(self._settings.get_ships())
             controller.set_ready_action(lambda: self.start_game(player1,
